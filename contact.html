@@ -1,0 +1,71 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B1220">
+<title>Contact | MOVA Technologies</title>
+<meta name="description" content="Contact MOVA Technologies about early access, custom projects or partnerships.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Contact | MOVA Technologies">
+<meta property="og:description" content="Contact MOVA Technologies about early access, custom projects or partnerships.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<script src="assets/js/boot.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container site-header__inner">
+<a class="brand" href="index.html" aria-label="MOVA Technologies, home"><img src="assets/img/mova-secondary-reversed.svg" width="111" height="34" alt="MOVA"></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><svg class="icon icon-open" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-menu"/></svg><svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-close"/></svg></button>
+<nav id="primary-nav" class="nav" aria-label="Primary">
+<ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li></ul>
+<a class="btn btn--primary" href="contact.html" aria-current="page">Get in touch <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow"/></svg></a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Contact</span><h1>Let&#8217;s talk.</h1><p class="lead">A few lines are enough.</p></div></section>
+<section class="section ">
+<div class="container">
+<div class="split"><div class="reveal"><form class="form" id="contact-form" novalidate>
+<div class="field"><label for="name">Name</label><input id="name" name="name" type="text" autocomplete="name" maxlength="120" required aria-describedby="err-name"><span class="field-error" id="err-name" role="alert"></span></div>
+<div class="field"><label for="email">Email</label><input id="email" name="email" type="email" autocomplete="email" maxlength="254" required aria-describedby="err-email"><span class="field-error" id="err-email" role="alert"></span></div>
+<div class="field"><label for="topic">Topic</label><select id="topic" name="topic" required aria-describedby="err-topic"><option value="general">General enquiry</option><option value="early-access">Early access</option><option value="custom-project">Custom project</option><option value="partnership">Partnership</option></select><span class="field-error" id="err-topic" role="alert"></span></div>
+<div class="field"><label for="message">Message</label><textarea id="message" name="message" maxlength="2000" required aria-describedby="err-message hint-message"></textarea><span class="field-hint" id="hint-message">10 to 2000 characters.</span><span class="field-error" id="err-message" role="alert"></span></div>
+<div class="hp" aria-hidden="true"><label for="website">Leave this field empty</label><input id="website" name="website" type="text" tabindex="-1" autocomplete="off"></div>
+<div class="field"><label class="check"><input type="checkbox" id="consent" name="consent" aria-describedby="err-consent"><span>I agree to MOVA Technologies using these details to reply. <a href="privacy.html">Privacy</a></span></label><span class="field-error" id="err-consent" role="alert"></span></div>
+<button class="btn btn--primary" type="submit">Send message <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow"/></svg></button>
+<p class="form-status" id="form-status" role="status" aria-live="polite"></p>
+</form></div><ul class="grid contact-side"><li class="reveal d1"><span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-bell"/></svg></span><div><strong>Early access</strong><p>Be first to try the platform when it is ready.</p></div></li><li class="reveal d2"><span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-code"/></svg></span><div><strong>Custom projects</strong><p>Describe the tool or site you need.</p></div></li><li class="reveal d3"><span class="ico"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-link"/></svg></span><div><strong>Partnerships</strong><p>Ideas for working together.</p></div></li></ul></div></div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<img src="assets/img/mova-primary-reversed.svg" width="211" height="64" alt="MOVA Technologies">
+<p>Technology That Moves Business Forward.</p>
+</div>
+<nav aria-label="Company"><h2>Company</h2><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+<nav aria-label="Product"><h2>Product</h2><ul><li><a href="products.html">MOVA Business Platform</a></li><li><a href="products.html#modules">Modules</a></li><li><a href="products.html#roadmap">Roadmap</a></li></ul></nav>
+</div>
+<div class="footer-bottom"><span>&copy; <span data-year>2026</span> MOVA Technologies</span><a href="privacy.html">Privacy</a></div>
+</div>
+</footer>
+<script src="assets/js/config.js"></script>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/contact.js"></script>
+</body>
+</html>
