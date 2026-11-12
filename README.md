@@ -6,15 +6,15 @@ Supabase is used for one thing only: storing contact-form messages.
 ## Structure
 
 ```
-index.html  products.html  services.html  about.html  contact.html  privacy.html  404.html
+index.html  products.html  demo.html  services.html  about.html  contact.html  privacy.html  404.html
 favicon.svg  favicon.ico  apple-touch-icon.png  android-chrome-*.png  site.webmanifest
 robots.txt  .nojekyll  .gitignore
 assets/
   css/   tokens.css  base.css  components.css  sections.css
-  js/    boot.js  main.js  hero-demo.js  connect.js  explorer.js  contact.js  config.js
+  js/    boot.js  main.js  hero-demo.js  connect.js  explorer.js  sandbox.js  contact.js  config.js
   img/   icons.svg (icon sprite)  mova-*-reversed.svg (official logos)  og-image.png
 supabase/migrations/001_contact_messages.sql
-tools/gen_pages.py
+tools/gen_pages.py  tools/check.py
 ```
 
 ## Run locally
@@ -26,6 +26,10 @@ python3 -m http.server 8000      # then open http://localhost:8000
 ## Editing pages
 
 The seven `.html` files are generated so the header, footer and `<head>` stay identical. Edit `tools/gen_pages.py`, then run `python3 tools/gen_pages.py` and commit the regenerated files.
+
+## Live demo
+
+`demo.html` is a working browser-only sandbox of the planned platform (inventory, sales, dashboard). Logic is in `assets/js/sandbox.js`. Data is stored in the visitor's browser (localStorage) and never sent anywhere. Seed figures are sample data and the page says so.
 
 ## Contact form (Supabase)
 
@@ -57,6 +61,12 @@ A strict Content-Security-Policy is set in each page (`script-src 'self'`, no in
 - Replace the privacy page with a legally reviewed version.
 - Hosting: GitHub's terms say Pages is not for running a commercial SaaS. It is fine for this marketing site; review hosting before the paid platform launches.
 
+## Quality check
+
+`python3 tools/check.py` verifies links, anchors, assets and icon-sprite symbols; one h1 and a description per page; alt text; no inline scripts, styles or handlers (CSP); no emoji; and no secret keys in the source. Run it before every commit.
+
 ## Tested
 
-Chromium at 375, 768 and 1366 px on all seven pages: no horizontal overflow, no console or CSP errors. Interactive demos, keyboard navigation, mobile menu and form flows (validation, success, error, honeypot, rate limit) were exercised. A screen-reader and real-device pass is still recommended.
+Chromium at 375, 768 and 1366 px on all eight pages: no horizontal overflow, no console or CSP errors. Interactive demos, keyboard navigation, mobile menu and form flows (validation, success, error, honeypot, rate limit) were exercised. A screen-reader and real-device pass is still recommended.
+
+Text contrast was audited in the browser across all pages and interactive states: no pair below WCAG AA. Each page loads about 75 to 90 KB of local files (HTML, CSS, JS, SVG), plus Google Fonts.
