@@ -13,7 +13,7 @@ assets/
   css/   tokens.css  base.css  components.css  sections.css
   js/    boot.js  main.js  hero-demo.js  connect.js  explorer.js  sandbox.js  contact.js  config.js
   img/   icons.svg (icon sprite)  mova-*-reversed.svg (official logos)  og-image.png
-supabase/migrations/001_contact_messages.sql
+supabase/migrations/001_contact_messages.sql  002_contact_rate_limit.sql
 tools/gen_pages.py  tools/check.py
 ```
 
@@ -34,11 +34,11 @@ The seven `.html` files are generated so the header, footer and `<head>` stay id
 ## Contact form (Supabase)
 
 1. Create a Supabase project.
-2. Run `supabase/migrations/001_contact_messages.sql` in the SQL editor. Visitors can insert only; nobody can read through the website.
+2. Run `supabase/migrations/001_contact_messages.sql` in the SQL editor, then `002_contact_rate_limit.sql`. Visitors can insert only; nobody can read through the website. Migration 002 limits each email address to 3 messages per hour and the whole form to 60 per hour (HTTP 429).
 3. Put the **project URL** and the **publishable (anon) key** in `assets/js/config.js`.
 4. Never put a secret or service-role key anywhere in this repository.
 
-Until step 3 is done, the form shows "Messaging is being connected". The form has validation, a honeypot field and a 30-second client-side limit. Server-side rate limiting is not included yet: add it (for example a CAPTCHA or an Edge Function) before the site receives real traffic.
+Until step 3 is done, the form shows "Messaging is being connected". The form has validation, a honeypot field and a 30-second client-side limit. Server-side rate limiting is in migration 002. For heavy traffic, consider adding a CAPTCHA as well.
 
 ## Deploy on GitHub Pages
 
