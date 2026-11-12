@@ -25,6 +25,13 @@ if (form) {
   };
   Object.keys(rules).forEach((n) => { const f = form.elements[n]; f.addEventListener('blur', () => check(n)); });
 
+  // New-style publishable keys (sb_publishable_...) are not JWTs and go in the apikey header only.
+  const headers = () => {
+    const h = { 'Content-Type': 'application/json', apikey: cfg.supabasePublishableKey, Prefer: 'return=minimal' };
+    if (!cfg.supabasePublishableKey.startsWith('sb_')) h.Authorization = `Bearer ${cfg.supabasePublishableKey}`;
+    return h;
+  };
+
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
     if (form.elements.website.value) return; // honeypot: bots fill hidden fields
@@ -37,7 +44,7 @@ if (form) {
     try {
       const res = await fetch(`${cfg.supabaseUrl.replace(/\/$/, '')}/rest/v1/contact_messages`, {
         method: 'POST',
-        headers: { 'Content-Type': 'application/json', apikey: cfg.supabasePublishableKey, Authorization: `Bearer ${cfg.supabasePublishableKey}`, Prefer: 'return=minimal' },
+        headers: headers(),
         body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), topic: form.topic.value, message: form.message.value.trim(), consent: true })
       });
       if (!res.ok) throw new Error(String(res.status));
