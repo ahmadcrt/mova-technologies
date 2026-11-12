@@ -294,7 +294,7 @@ privacy = '<section class="page-hero"><div class="container"><span class="eyebro
 <h2>What we collect</h2>
 <p>Only what you type into the contact form: your name, email address, topic and message, plus your confirmation that we may use them to reply.</p>
 <h2>Why</h2>
-<p>To read and answer your message. We do not use it for anything else.</p>
+<p>To read and answer your message, and to limit spam (for example, by counting recent messages from the same email address). We do not use it for anything else.</p>
 <h2>Where it is stored</h2>
 <p>Messages are stored in a database hosted by Supabase. Only the site owner can read them.</p>
 <h2>Cookies and tracking</h2>
