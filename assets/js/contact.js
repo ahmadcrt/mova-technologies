@@ -47,11 +47,12 @@ if (form) {
         headers: headers(),
         body: JSON.stringify({ name: form.name.value.trim(), email: form.email.value.trim(), topic: form.topic.value, message: form.message.value.trim(), consent: true })
       });
-      if (!res.ok) throw new Error(String(res.status));
+      if (!res.ok) { let detail = ''; try { detail = await res.text(); } catch (_) { /* ignore */ } console.error('Contact form rejected', res.status, detail); const e = new Error(String(res.status)); e.status = res.status; throw e; }
       try { localStorage.setItem('mova_last_send', String(Date.now())); } catch (_) { /* storage unavailable */ }
       form.reset(); show('ok', 'Thank you. Your message has been sent.');
-    } catch (_err) {
-      show('error', 'Sorry, your message could not be sent. Please try again later.');
+    } catch (err) {
+      const code = err && err.status ? `error ${err.status}` : 'network error';
+      show('error', `Sorry, your message could not be sent (${code}). Please try again later.`);
     } finally { submit.disabled = false; submit.removeAttribute('aria-busy'); }
   });
 }
