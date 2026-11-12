@@ -1,1 +1,109 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B1220">
+<title>Live demo | MOVA Technologies</title>
+<meta name="description" content="Try a working sandbox of the planned MOVA Business Platform: manage products, record sales and watch the dashboard update.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Live demo | MOVA Technologies">
+<meta property="og:description" content="Try a working sandbox of the planned MOVA Business Platform: manage products, record sales and watch the dashboard update.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="apple-touch-icon" href="apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap">
+<link rel="stylesheet" href="assets/css/tokens.css">
+<link rel="stylesheet" href="assets/css/base.css">
+<link rel="stylesheet" href="assets/css/components.css">
+<link rel="stylesheet" href="assets/css/sections.css">
+<script src="assets/js/boot.js"></script>
+</head>
+<body>
+<a class="skip-link" href="#main">Skip to content</a>
+<header class="site-header">
+<div class="container site-header__inner">
+<a class="brand" href="index.html" aria-label="MOVA Technologies, home"><img src="assets/img/mova-secondary-reversed.svg" width="111" height="34" alt="MOVA"></a>
+<button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-nav" aria-label="Open menu"><svg class="icon icon-open" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-menu"/></svg><svg class="icon icon-close" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-close"/></svg></button>
+<nav id="primary-nav" class="nav" aria-label="Primary">
+<ul><li><a href="index.html">Home</a></li><li><a href="products.html">Products</a></li><li><a href="demo.html" aria-current="page">Live demo</a></li><li><a href="services.html">Services</a></li><li><a href="about.html">About</a></li></ul>
+<a class="btn btn--primary" href="contact.html">Get in touch <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow"/></svg></a>
+</nav>
+</div>
+</header>
+<main id="main">
+<section class="page-hero"><div class="container"><span class="eyebrow">Live demo</span><h1>Try it. It works.</h1><p class="lead">A working sandbox of the planned platform. Add products, make sales and watch the numbers change.</p></div></section>
+<section class="section section--dark">
+<div class="container">
+<noscript><p class="lead">The demo needs JavaScript. Please enable it to try the sandbox.</p></noscript>
+<p class="sbx-note reveal"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-shield"/></svg><span>Sandbox with sample data. Everything stays in your browser and nothing is sent to a server. This is a preview of the idea, not the final product.</span></p>
+<div class="sbx reveal d1" data-sbx>
+<div class="sbx__bar">
+<div class="sbx__tabs" role="tablist" aria-label="Demo sections">
+<button class="sbx__tab" role="tab" id="sbx-t1" aria-controls="sbx-p1" aria-selected="true" data-sbx-tab type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-grid"/></svg>Dashboard</button>
+<button class="sbx__tab" role="tab" id="sbx-t2" aria-controls="sbx-p2" aria-selected="false" tabindex="-1" data-sbx-tab type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-box"/></svg>Inventory</button>
+<button class="sbx__tab" role="tab" id="sbx-t3" aria-controls="sbx-p3" aria-selected="false" tabindex="-1" data-sbx-tab type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-cart"/></svg>Sales</button>
+</div>
+<button class="sbx__reset" id="sbx-reset" type="button"><svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-refresh"/></svg> Reset sandbox</button>
+</div>
+<div class="sbx__panel" role="tabpanel" id="sbx-p1" aria-labelledby="sbx-t1">
+<div class="kpis"><div class="kpi"><small>Sales today</small><strong id="k-sales">&#8358;0</strong></div><div class="kpi"><small>Items sold today</small><strong id="k-items">0</strong></div><div class="kpi"><small>Needs attention</small><strong id="k-low">0</strong></div></div>
+<h3>Last 7 days</h3>
+<div class="bars" id="d-bars" aria-hidden="true"></div><div class="days" id="d-days" aria-hidden="true"></div>
+<p class="pw__note">Earlier days are sample data. Today updates as you make sales.</p>
+<h3>Low or out of stock</h3><ul class="list" id="d-low"></ul>
+</div>
+<div class="sbx__panel" role="tabpanel" id="sbx-p2" aria-labelledby="sbx-t2" hidden>
+<table class="tbl"><thead><tr><th scope="col">Product</th><th scope="col">Price</th><th scope="col">In stock</th><th scope="col">Status</th><th scope="col">Actions</th></tr></thead><tbody id="inv-body"></tbody></table>
+<h3>Add a product</h3>
+<form class="form" id="inv-form" novalidate>
+<div class="form-row"><div class="field"><label for="pname">Name</label><input id="pname" name="pname" type="text" maxlength="60" required></div><div class="field"><label for="pprice">Price (NGN)</label><input id="pprice" name="pprice" type="number" min="1" step="1" inputmode="numeric" required></div><div class="field"><label for="pstock">Stock</label><input id="pstock" name="pstock" type="number" min="0" step="1" inputmode="numeric" required></div><div class="field"><label for="preorder">Reorder level</label><input id="preorder" name="preorder" type="number" min="0" step="1" inputmode="numeric"></div></div>
+<div><button class="btn btn--primary" type="submit">Add product <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow"/></svg></button></div>
+<p class="form-msg" id="inv-msg" role="status"></p>
+</form>
+</div>
+<div class="sbx__panel" role="tabpanel" id="sbx-p3" aria-labelledby="sbx-t3" hidden>
+<div class="sbx-grid">
+<div class="form">
+<form class="form" id="s-form" novalidate>
+<div class="form-row form-row--2"><div class="field"><label for="s-product">Product</label><select id="s-product" name="sproduct"></select></div><div class="field"><label for="s-qty">Qty</label><input id="s-qty" name="sqty" type="number" min="1" step="1" value="1" inputmode="numeric"></div><button class="btn btn--ghost" type="submit">Add to cart</button></div>
+<p class="form-msg" id="s-msg" role="status"></p>
+</form>
+<h3>Cart</h3><ul class="list" id="s-cart"></ul>
+<div class="cart-total"><span>Total</span><span id="s-total">&#8358;0</span></div>
+<button class="btn btn--primary" id="s-complete" type="button" disabled>Complete sale <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-check"/></svg></button>
+</div>
+<div><h3>Recent sales</h3><ul class="list" id="s-recent"></ul></div>
+</div>
+</div>
+</div>
+<p class="sr-only" id="sbx-live" role="status" aria-live="polite"></p>
+</div>
+</section>
+<section class="section ">
+<div class="container">
+<div class="cta-band reveal"><h2>Want this for your business?</h2><p class="lead">The real platform is in planning. Join the early-access list.</p><a class="btn btn--primary" href="contact.html?topic=early-access">Request early access <svg class="icon" aria-hidden="true" focusable="false"><use href="assets/img/icons.svg#i-arrow"/></svg></a></div>
+</div>
+</section>
+</main>
+<footer class="site-footer">
+<div class="container">
+<div class="footer-grid">
+<div>
+<img src="assets/img/mova-primary-reversed.svg" width="211" height="64" alt="MOVA Technologies">
+<p>Technology That Moves Business Forward.</p>
+</div>
+<nav aria-label="Company"><h2>Company</h2><ul><li><a href="about.html">About</a></li><li><a href="services.html">Services</a></li><li><a href="contact.html">Contact</a></li></ul></nav>
+<nav aria-label="Product"><h2>Product</h2><ul><li><a href="products.html">MOVA Business Platform</a></li><li><a href="demo.html">Live demo</a></li><li><a href="products.html#modules">Modules</a></li><li><a href="products.html#roadmap">Roadmap</a></li></ul></nav>
+</div>
+<div class="footer-bottom"><span>&copy; <span data-year>2026</span> MOVA Technologies</span><a href="privacy.html">Privacy</a></div>
+</div>
+</footer>
+<script type="module" src="assets/js/main.js"></script>
+<script type="module" src="assets/js/sandbox.js"></script>
+</body>
+</html>
