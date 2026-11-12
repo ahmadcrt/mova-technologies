@@ -51,8 +51,8 @@ if (form) {
       try { localStorage.setItem('mova_last_send', String(Date.now())); } catch (_) { /* storage unavailable */ }
       form.reset(); show('ok', 'Thank you. Your message has been sent.');
     } catch (err) {
-      const code = err && err.status ? `error ${err.status}` : 'network error';
-      show('error', `Sorry, your message could not be sent (${code}). Please try again later.`);
+      if (err && err.status === 429) { show('error', 'You have sent several messages recently. Please try again later.'); }
+      else { const code = err && err.status ? `error ${err.status}` : 'network error'; show('error', `Sorry, your message could not be sent (${code}). Please try again later.`); }
     } finally { submit.disabled = false; submit.removeAttribute('aria-busy'); }
   });
 }
