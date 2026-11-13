@@ -15,6 +15,7 @@ button { cursor: pointer; }
 .skip-link { position: absolute; left: 1rem; top: -4rem; z-index: 100; background: var(--blue); color: var(--white); padding: 0.7rem 1rem; border-radius: var(--radius-sm); text-decoration: none; transition: top 0.2s; }
 .skip-link:focus { top: 1rem; }
 .icon { width: 1.25em; height: 1.25em; flex: none; fill: none; stroke: currentColor; stroke-width: 1.75; stroke-linecap: round; stroke-linejoin: round; }
+
 /* sections */
 .section { padding-block: var(--space-9); position: relative; }
 .section--dark { background: var(--navy); color: var(--white); }
@@ -25,6 +26,7 @@ button { cursor: pointer; }
 .eyebrow { font-size: 0.75rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase; color: var(--blue); }
 .section--dark .eyebrow, .hero .eyebrow, .page-hero .eyebrow { color: var(--blue-300); }
 .lead { font-size: var(--fs-lg); color: var(--silver); max-width: 34rem; }
+
 /* reveal on scroll (only when JS is running) */
 .js .reveal { opacity: 0; transform: translateY(18px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); transition-delay: var(--d, 0ms); }
 .js .reveal.is-visible { opacity: 1; transform: none; }
@@ -33,4 +35,7 @@ button { cursor: pointer; }
   *, *::before, *::after { animation-duration: 0.001ms !important; animation-iteration-count: 1 !important; transition-duration: 0.001ms !important; }
   .js .reveal { opacity: 1; transform: none; }
 }
+
 .d1 { --d: 80ms; } .d2 { --d: 160ms; } .d3 { --d: 240ms; } .d4 { --d: 320ms; } .d5 { --d: 400ms; }
+
+[hidden] { display: none !important; }
