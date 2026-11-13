@@ -27,7 +27,7 @@ class P(HTMLParser):
         if tag=='script': s.in_script=False
     def handle_data(s, data):
         if not s.in_script: s.text.append(data)
-pages=sorted(f for f in os.listdir(ROOT) if f.endswith('.html'))
+pages=sorted([f for f in os.listdir(ROOT) if f.endswith('.html')]+[os.path.join('app',f) for f in os.listdir(os.path.join(ROOT,'app')) if f.endswith('.html')] if os.path.isdir(os.path.join(ROOT,'app')) else [f for f in os.listdir(ROOT) if f.endswith('.html')])
 parsed={}
 for f in pages:
     p=P(); p.feed(open(os.path.join(ROOT,f),encoding='utf-8').read()); parsed[f]=p
@@ -41,15 +41,16 @@ for f,p in parsed.items():
     for r in p.refs:
         if re.match(r'^(https?:|mailto:|tel:|data:)',r): continue
         path,_,frag=r.partition('#'); path=path.split('?')[0]
-        target=os.path.join(ROOT,path) if path else os.path.join(ROOT,f)
+        pdir=os.path.dirname(os.path.join(ROOT,f))
+        target=os.path.normpath(os.path.join(pdir,path)) if path else os.path.join(ROOT,f)
         if path and not os.path.exists(target): errs.append(f'missing file: {r}'); continue
         if frag and (path.endswith('.html') or not path):
-            tp=parsed.get(path or f)
+            tp=parsed.get(os.path.relpath(target,ROOT))
             if tp and frag not in tp.ids: errs.append(f'missing anchor: {r}')
         if frag and path.endswith('.svg'):
             if f'id="{frag}"' not in open(target,encoding='utf-8').read(): errs.append(f'missing sprite symbol: {r}')
     for e in errs: print(f'FAIL {f}: {e}'); bad+=1
-for dp,_,fs in os.walk(os.path.join(ROOT,'assets')):
+for dp,_,fs in [x for base in ('assets','app') if os.path.isdir(os.path.join(ROOT,base)) for x in os.walk(os.path.join(ROOT,base))]:
     for fn in fs:
         if fn.endswith(('.js','.css')):
             t=open(os.path.join(dp,fn),encoding='utf-8').read()
