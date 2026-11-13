@@ -1,1 +1,37 @@
-
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self'; style-src 'self' https://fonts.googleapis.com; font-src https://fonts.gstatic.com; img-src 'self' data:; connect-src 'self' https://*.supabase.co; base-uri 'self'; form-action 'self'; object-src 'none'">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0B1220">
+<meta name="robots" content="noindex">
+<title>Dashboard | MOVA Business Platform</title>
+<meta name="description" content="Sign in to the MOVA Business Platform.">
+<link rel="icon" href="../favicon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="../apple-touch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Sora:wght@600;700&display=swap">
+<link rel="stylesheet" href="../assets/css/tokens.css">
+<link rel="stylesheet" href="../assets/css/base.css">
+<link rel="stylesheet" href="../assets/css/components.css">
+<link rel="stylesheet" href="css/app.css">
+<script src="../assets/js/boot.js"></script>
+<script src="../assets/js/config.js"></script>
+</head>
+<body class="app-body" data-page="dashboard">
+<a class="skip-link" href="#main">Skip to content</a>
+<div class="shell">
+<aside class="shell__side">
+<div><img src="../assets/img/mova-secondary-reversed.svg" width="111" height="34" alt="MOVA"><nav class="side-nav" aria-label="Main"><a href="dashboard.html" aria-current="page"><svg class="icon" aria-hidden="true" focusable="false"><use href="../assets/img/icons.svg#i-grid"/></svg>Dashboard</a></nav></div>
+<div class="side-user"><span>Signed in as</span><strong data-user-name></strong><button class="btn btn--ghost" type="button" data-signout>Sign out</button></div>
+</aside>
+<div>
+<header class="shell__top"><div class="who"><img src="../assets/img/mova-symbol-reversed.svg" width="27" height="30" alt="MOVA"><span data-biz-name>Your business</span></div><button class="btn btn--ghost" type="button" data-signout>Sign out</button></header>
+<main id="main" class="shell__main"><div class="inner"><div class="dash-head"><h1>Dashboard</h1><p class="sub" id="greet"></p></div><div id="dash" class="inner"><p class="loading" role="status">Loading your business...</p></div></div></main>
+</div>
+</div>
+<script type="module" src="js/dashboard.js"></script>
+</body>
+</html>
