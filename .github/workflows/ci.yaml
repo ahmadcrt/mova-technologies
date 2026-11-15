@@ -30,5 +30,7 @@ jobs:
           version: latest
       - name: Start a local Supabase and apply every migration
         run: supabase start
+      - name: Verify applied migrations
+        run: supabase migration list
       - name: Run the database tests
         run: supabase test db supabase/tests/database
