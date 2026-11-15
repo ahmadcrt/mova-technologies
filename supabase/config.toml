@@ -1,0 +1,5 @@
+# Local test configuration only. This file holds no keys or secrets.
+project_id = "mova-technologies"
+
+[db]
+major_version = 17
