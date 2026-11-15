@@ -71,6 +71,10 @@ A strict Content-Security-Policy is set in each page (`script-src 'self'`, no in
 - Replace the privacy page with a legally reviewed version.
 - Hosting: GitHub's terms say Pages is not for running a commercial SaaS. It is fine for this marketing site; review hosting before the paid platform launches.
 
+## Automated tests
+
+`.github/workflows/ci.yml` runs the site checker and the database tests (`supabase/tests/database/`) on every push, using a temporary local Supabase. A red run means a change must not be used. Rollback scripts are in `supabase/rollbacks/`; operations notes are in `docs/OPERATIONS.md`.
+
 ## Quality check
 
 `python3 tools/check.py` verifies links, anchors, assets and icon-sprite symbols; one h1 and a description per page; alt text; no inline scripts, styles or handlers (CSP); no emoji; and no secret keys in the source. Run it before every commit.
